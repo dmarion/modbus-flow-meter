@@ -1,0 +1,14 @@
+BasedOnStyle: LLVM
+UseTab: Never
+IndentWidth: 2
+TabWidth: 2
+ContinuationIndentWidth: 2
+PackConstructorInitializers: NextLineOnly
+BreakConstructorInitializers: AfterColon
+IndentAccessModifiers: false
+AccessModifierOffset: -4
+SortIncludes: false
+BreakBeforeBinaryOperators: NonAssignment
+BinPackArguments: false
+AlignOperands: false
+
