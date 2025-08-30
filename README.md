@@ -10,11 +10,12 @@ Bare-metal firmware for **STM32L031** that measures water flow and consumption f
   - Counts pulses from YF-B5 hall sensor via hardware timer capture.
   - Computes instantaneous flow rate (L/min).
   - Accumulates total water consumption (liters).
+  - MCU led blinks once for each dL
 
 - **Modbus RTU Slave**
   - RS-485 half‑duplex on **LPUART1 (PA2/PA3)**.
   - Supports **only** Modbus function code `0x03` (Read Holding Registers).
-  - **DE/RE driven by GPIO PA1** (no CTS/RTS required).
+  - **DE/RE driven by GPIO PB1** (no CTS/RTS required).
 
 - **Bare Metal Implementation**
   - No HAL or CMSIS drivers.
@@ -42,9 +43,12 @@ Bare-metal firmware for **STM32L031** that measures water flow and consumption f
 | MCU Pin | Function                         | Notes |
 |--------:|----------------------------------|-------|
 | **PA0** | **TIM2_CH1**                     | Pulse input from **EL817** (isolated YF‑B5 signal) |
-| **PA1** | **GPIO output**                  | RS‑485 **DE/RE** control (active‑high) |
+| **PA1** | **GPIO output**                  | MCU LED |
 | **PA2** | **LPUART1_TX**                   | RS‑485 **DI** (Modbus TX) |
 | **PA3** | **LPUART1_RX**                   | RS‑485 **RO** (Modbus RX) |
+| **PA4** | **GPIO input**                   | MODBUS addr bit 0 |
+| **PA5** | **GPIO input**                   | MODBUS addr bit 1 |
+| **PB1** | **GPIO output**                  | RS‑485 **DE/RE** control (active‑high) |
 | **PB6** | **USART2_TX**                    | Debug console TX |
 | **PB7** | **USART2_RX**                    | Debug console RX |
 | **PA13**| **SWDIO**                        | Debug data line |
